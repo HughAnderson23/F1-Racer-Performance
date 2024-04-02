@@ -1,15 +1,22 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useEffect, useContext } from "react";
 import "../../styles/home.css";
+import { Context } from "../store/appContext";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+export const Home = () => {
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.fetchDrivers(2024);
+  }, []); 
+
+  return (
+    <div className="text-center mt-5">
+      <h2>Driver List for 2024 Season</h2>
+      <ul>
+        {store.drivers.map((driver, index) => (
+          <li key={index}>{driver.givenName} {driver.familyName}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
