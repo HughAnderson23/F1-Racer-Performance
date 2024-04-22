@@ -12,13 +12,13 @@
 		"deploy": "node deploy-to-github.js"
 	},
 	"author": {
-		"name": "Alejandro Sanchez",
-		"url": "http://alesanchezr.com/"
+		"name": "Hugh Anderson",
+		"url": "https://github.com/HughAnderson23"
 	},
 	"contributors": [
 		{
-			"name": "Alejandro Sanchez",
-			"url": "http://alesanchezr.com/"
+			"name": "Hugh Anderson",
+			"url": "https://github.com/HughAnderson23"
 		},
 		{
 			"name": "Ignacio Cordoba",
