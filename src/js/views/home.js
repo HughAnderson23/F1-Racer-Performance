@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
+import QualiResults from "/src/js/component/qualiresults.js"
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -45,34 +46,7 @@ export const Home = () => {
         ))}
       </select>
       {/* Display qualifying results */}
-      <div className = "tables-container">
-        <div>
-          <h3>Qualifying Results</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Position</th>
-                <th>Driver</th>
-                <th>Constructor</th>
-                <th>Q1 Time</th>
-                <th>Q2 Time</th>
-                <th>Q3 Time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {store.qualifyingResults.map((result, index) => (
-                <tr key={index}>
-                  <td>{result.position}</td>
-                  <td>{result.Driver.givenName} {result.Driver.familyName}</td>
-                  <td>{result.Constructor.name}</td>
-                  <td>{result.Q1}</td>
-                  <td>{result.Q2}</td>
-                  <td>{result.Q3}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <QualiResults results={store.qualifyingResults} />
         {/* Display race results */}
         <div>
           <h3>Race Results</h3>
@@ -99,7 +73,7 @@ export const Home = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      
     </div>
   );
 };
