@@ -28,7 +28,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center mt-5 home-container" style={{ backgroundImage: `url(${require("/src/img/f1background_image.png")})` }}>
       <h2>Driver Performance Comparison</h2>
       <select value={selectedRound} onChange={handleRaceChange}>
         <option value="">Select a race</option>
@@ -103,6 +103,7 @@ export const Home = () => {
     </div>
   );
 };
+
 
 
 
