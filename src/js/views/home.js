@@ -1,7 +1,10 @@
 import React, { useEffect, useContext, useState } from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import QualiResults from "/src/js/component/qualiresults.js"
+import QualiResults from "/src/js/component/qualiresults.js";
+import RaceResults from "/src/js/component/raceresults.js";
+
+import f1car from "/src/img/f1background_image.png";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -29,7 +32,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="text-center mt-5 home-container" style={{ backgroundImage: `url(${require("/src/img/f1background_image.png")})` }}>
+    <div className="text-center  home-container" style={{ backgroundImage: `url(${f1car})` }}>
       <h2>Driver Performance Comparison</h2>
       <select value={selectedRound} onChange={handleRaceChange}>
         <option value="">Select a race</option>
@@ -45,38 +48,16 @@ export const Home = () => {
           </optgroup>
         ))}
       </select>
-      {/* Display qualifying results */}
+      {/* Qualifier results component*/}
       <QualiResults results={store.qualifyingResults} />
-        {/* Display race results */}
-        <div>
-          <h3>Race Results</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Position</th>
-                <th>Driver</th>
-                <th>Constructor</th>
-                {/* Add other relevant race result fields here */}
-              </tr>
-            </thead>
-            <tbody>
-              {/* Iterate over race results and render each row */}
-              {/* Use selectedRace from state to render race results */}
-              {store.raceResults.map((result, index) => (
-                <tr key={index}>
-                  <td>{result.position}</td>
-                  <td>{result.Driver.givenName} {result.Driver.familyName}</td>
-                  <td>{result.Constructor.name}</td>
-                  {/* Add other relevant race result fields here */}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      
+      {/* Race results component */}
+      <RaceResults raceResults={store.raceResults} />
     </div>
   );
 };
+
+export default Home;
+
 
 
 
