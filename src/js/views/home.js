@@ -3,13 +3,11 @@ import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import QualiResults from "/src/js/component/qualiresults.js";
 import RaceResults from "/src/js/component/raceresults.js";
-
-import f1car from "/src/img/f1background_image.png";
+import Banner from "/src/js/component/banner.js";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [selectedRound, setSelectedRound] = useState("");
-  const [selectedRace, setSelectedRace] = useState("");
 
   useEffect(() => {
     actions.fetchDrivers(2024);
@@ -32,7 +30,7 @@ export const Home = () => {
   }
 
   return (
-    <div className="text-center  home-container" style={{ backgroundImage: `url(${f1car})` }}>
+    <div className="text-center home-container">
       <h2>Driver Performance Comparison</h2>
       <select value={selectedRound} onChange={handleRaceChange}>
         <option value="">Select a race</option>
@@ -48,6 +46,7 @@ export const Home = () => {
           </optgroup>
         ))}
       </select>
+      <Banner />
       {/* Qualifier results component*/}
       <QualiResults results={store.qualifyingResults} />
       {/* Race results component */}
@@ -57,6 +56,7 @@ export const Home = () => {
 };
 
 export default Home;
+
 
 
 
